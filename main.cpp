@@ -1,33 +1,33 @@
-#include <iostream>
-#include <ctime>
+// Hometask #1 //
 
-using namespace std;
+#include <iostream>
+#include <string>
+#include <ctime>
 
 int main()
 {
-    srand(static_cast<unsigned int>(time(0)));
-    char answ;
-
+    srand(static_cast<unsigned int>(time(nullptr)));
+    char answer;
 
     do
     {
-        cout << "Enter Rock, Scissors or Paper:" << endl
-                  << "0 - rock" << endl
-                  << "1 - scissors" << endl
-                  << "2 - paper" << endl;
+        std::cout << "Enter Rock, Scissors or Paper:" << std::endl;
 
-        int persWeapon;
-        bool a(1);
+        std::string persWeapon;
+        bool a{1};
 
         // Checking whether the input is correct or no
         do
         {
-            cin >> persWeapon;
-            if(persWeapon < 0 || persWeapon > 2)
+            std::cin >> persWeapon;
+            if(!(persWeapon == "rock" || persWeapon == "r" ||
+                    persWeapon == "paper" || persWeapon == "p" ||
+                    persWeapon == "scissors" || persWeapon == "s"))
             {
-                cout << "Wrong input! Try again... ";
+                std::cout << "Wrong input! Try again... ";
             }
-                else a = 0;
+            else a = 0;
+
         }while(a);
 
 
@@ -37,31 +37,31 @@ int main()
         switch(compWeapon)
         {
             case 0:
-                cout << "Computer selected rock... ";
-                cout << ((persWeapon == 0) ? ("Draw...")
-                                     : (persWeapon == 1) ? ("You lose...")
-                                                          : ("You win..."));
+               std::cout << "Computer selected rock... ";
+               std:: cout << ((persWeapon == "rock" || persWeapon == "r") ? ("Draw...")
+                                     : (persWeapon == "scissors" || persWeapon == "s") ? ("You lose...")
+                                                                                       : ("You win..."));
                 break;
             case 1:
-                cout << "Comuter selected scissors... ";
-                cout << ((persWeapon == 1) ? ("Draw...")
-                                     : (persWeapon == 2) ? ("You lose...")
-                                                          : ("You win... "));
+                std::cout << "Comuter selected scissors... ";
+                std::cout << ((persWeapon == "scissors" || persWeapon == "s") ? ("Draw...")
+                                     : (persWeapon == "paper" || persWeapon == "p") ? ("You lose...")
+                                                                                    : ("You win... "));
                 break;
             case 2:
-                cout << "Computer selected paper... ";
-                cout << ((persWeapon == 2) ? ("Draw...")
-                                     : (persWeapon == 0) ? ("You lose...")
+                std::cout << "Computer selected paper... ";
+                std::cout << ((persWeapon == "paper" || persWeapon == "p") ? ("Draw...")
+                                     : (persWeapon == "rock" || persWeapon == "r") ? ("You lose...")
                                                           : ("You win..."));
                 break;
                 return 0;
         }
 
-        cout << endl << "Retry?" << endl;
-        cin >> answ;
+        std::cout << std::endl << "Retry?" << std::endl;
+        std::cin >> answer;
         system("cls");
 
-    } while(answ == 'y' || answ == 'Y');
+    } while(answer == 'y' || answer == 'Y');
 
     return 0;
 }
